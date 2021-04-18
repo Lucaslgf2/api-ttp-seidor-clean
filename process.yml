@@ -1,0 +1,7 @@
+apps:
+  - script   : dist/main/server.js
+    name     : 'api-ttp-seidor-clean'
+    instances: 4
+    exec_mode: cluster
+    env    :
+      NODE_ENV: dev

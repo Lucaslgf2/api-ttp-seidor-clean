@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Custom ignored files
+package-lock.json
+yarn.lock
+.vs/
+coverage/
+dist/
+node_modules/
+temp/

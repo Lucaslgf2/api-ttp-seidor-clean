@@ -1,0 +1,66 @@
+{
+  "name": "api-ttp-seidor-clean",
+  "version": "1.0.0",
+  "description": "API que permite controlar a utilização dos automóveis de uma empresa.",
+  "main": "/src/main/server.ts",
+  "scripts": {
+    "start": "npm run build && node dist/main/server.js",
+    "build": "rimraf dist/ && tsc -p tsconfig-build.json && npm run copy:templates",
+    "build-all": "rimraf dist/ && tsc -p tsconfig.json && npm run copy:templates",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test:verbose": "jest --passWithNoTests --runInBand --verbose true",
+    "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucaslgf2/api-ttp-seidor-clean.git"
+  },
+  "keywords": [],
+  "author": "Lucas Gusmão de Freitas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lucaslgf2/api-ttp-seidor-clean/issues"
+  },
+  "homepage": "https://github.com/Lucaslgf2/api-ttp-seidor-clean#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/faker": "^5.5.2",
+    "@types/jest": "^26.0.22",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/node": "^14.14.41",
+    "@types/sqlite3": "^3.1.7",
+    "@types/supertest": "^2.0.11",
+    "@types/swagger-ui-express": "^4.1.2",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "eslint": "^7.24.0",
+    "eslint-config-standard-with-typescript": "^20.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "faker": "^5.5.3",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.4",
+    "supertest": "^6.1.3",
+    "ts-jest": "^26.5.5"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "rimraf": "^3.0.2",
+    "sqlite3": "^5.0.2",
+    "swagger-ui-express": "^4.1.6",
+    "tsconfig-paths": "^3.9.0",
+    "typeorm": "^0.2.32",
+    "typescript": "^4.2.4"
+  },
+  "_moduleAliases": {
+    "@": "dist"
+  }
+}
