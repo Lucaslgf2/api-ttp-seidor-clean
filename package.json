@@ -5,8 +5,8 @@
   "main": "/src/main/server.ts",
   "scripts": {
     "start": "npm run build && node dist/main/server.js",
-    "build": "rimraf dist/ && tsc -p tsconfig-build.json && npm run copy:templates",
-    "build-all": "rimraf dist/ && tsc -p tsconfig.json && npm run copy:templates",
+    "build": "rimraf dist/ && tsc -p tsconfig-build.json",
+    "build-all": "rimraf dist/ && tsc -p tsconfig.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand --verbose true",
