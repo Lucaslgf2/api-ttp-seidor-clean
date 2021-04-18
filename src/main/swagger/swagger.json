@@ -1,0 +1,5008 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API-Seminovos-B2B",
+    "description": "API Backend do Portal Unidas Seminovos B2B.",
+    "contact": {
+      "name": "Sistemas Seminovos",
+      "url": "https://www.unidas.com.br",
+      "email": "sistemas.seminovos@unidas.com.br"
+    },
+    "version": "1.0.0"
+  },
+
+  "servers": [
+    {
+      "url": "http://localhost:9001/api",
+      "description": "LOCAL Server"
+    },
+    {
+      "url": "http://uni-hml-useast-lnx-b2bseminovos-dev.azurewebsites.net/api",
+      "description": "DEV Server"
+    },
+    {
+      "url": "http://uni-hml-useast-lnx-b2bseminovos-hml.azurewebsites.net/api",
+      "description": "HML Server"
+    },
+    {
+      "url": "https://uni-prd-useast-lnx-b2bseminovos.azurewebsites.net/api",
+      "description": "PROD Server"
+    }
+  ],
+
+  "tags": [
+    {
+      "name": "Análise Cadastral",
+      "description": "Endpoints relacionados a análise cadastral do cliente"
+    },
+    {
+      "name": "Cidades",
+      "description": "Endpoints relacionados a entidade de Cidade"
+    },
+    {
+      "name": "ClientesB2B",
+      "description": "Endpoints relacionados a entidade de Cliente B2B"
+    },
+    {
+      "name": "Configuracoes B2B",
+      "description": "Endpoints relacionados a entidade de Configuração B2B"
+    },
+    {
+      "name": "CNPJ / CPF / Email",
+      "description": "Endpoint para validação de CNPJ, CPF e Email"
+    },
+    {
+      "name": "Destaques da Semana",
+      "description": "Endpoint para retornar as categorias destaque da semana"
+    },
+    {
+      "name": "Endereços ClienteB2B",
+      "description": "Endpoints relacionados a entidade de Cliente B2B"
+    },
+    {
+      "name": "Filtros",
+      "description": "Endpoint de retorno das opções de filtros"
+    },
+    {
+      "name": "Formas de Pagamento",
+      "description": "Endpoints relacionados a entidade de Formas de Pagamento"
+    },
+    {
+      "name": "Frequências de Compra",
+      "description": "Endpoint relacionado a entidade de Frequências de Compra"
+    },
+    {
+      "name": "Historico de Pesquisas",
+      "description": "Endpoint relacionado a entidade de Historico de Pesquisas"
+    },
+    {
+      "name": "Informações Adicionais",
+      "description": "Endpoint relacionado a entidade de Informações Adicionais do ClienteB2B"
+    },
+    {
+      "name": "Login",
+      "description": "Endpoint relacionado ao Login do Usuario"
+    },
+    {
+      "name": "Modelos de Veiculo",
+      "description": "Endpoints relacionados a entidade de Modelos dos Veiculos"
+    },
+    {
+      "name": "Pos Venda",
+      "description": "Endpoints relacionados a criação de chamados no Topdesk"
+    },
+    {
+      "name": "Preferências Categoria",
+      "description": "Endpoints relacionados as preferências de compra"
+    },
+    {
+      "name": "Preferências Marca",
+      "description": "Endpoints relacionados as preferências de compra"
+    },
+    {
+      "name": "Senha",
+      "description": "Endpoints relacionados a entidade de Senhas"
+    },
+    {
+      "name": "Tipos de Veiculo",
+      "description": "Endpoints relacionados a entidade de Tipos dos Veiculos"
+    },
+    {
+      "name": "Usuarios",
+      "description": "Endpoints relacionados a entidade de Usuarios"
+    },
+    {
+      "name": "Veiculo Reservado",
+      "description": "Endpoints relacionados a entidade de Veiculo Reservado"
+    },
+    {
+      "name": "Veiculos Favoritos",
+      "description": "Endpoints relacionados a entidade de Veiculos Favoritos"
+    },
+    {
+      "name": "Veiculos",
+      "description": "Endpoints relacionados a entidade de Veiculos"
+    },
+    {
+      "name": "Vendas",
+      "description": "Endpoints relacionados a entidade de Veiculos"
+    }
+  ],
+
+  "paths": {
+    "/analise-cadastral/clientes-b2b": {
+      "get": {
+        "tags": ["Análise Cadastral"],
+        "summary": "",
+        "description": "",
+        "responses": {
+          "200": {
+            "$ref": "#components/responses/getClientesB2BResponse"
+          }
+        }
+      }
+    },
+
+    "/analise-cadastral/clientes-b2b/{clienteB2BId}": {
+      "get": {
+        "tags": ["Análise Cadastral"],
+        "summary": "",
+        "description": "",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getClientesB2BResponse"
+          }
+        }
+      }
+    },
+
+    "/analise-cadastral/motivos": {
+      "get": {
+        "tags": ["Análise Cadastral"],
+        "summary": "Retorna os motivos para a situação cadastral",
+        "description": "Endpoint para retornar os motivos correspondentes as situações cadastrais dos clientes",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getMotivoAnaliseCadastralResponse"
+          }
+        }
+      }
+    },
+
+    "/analise-cadastral/status": {
+      "get": {
+        "tags": ["Análise Cadastral"],
+        "summary": "",
+        "description": "",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getStatusAnaliseCadastralResponse"
+          }
+        }
+      }
+    },
+
+    "/cidades": {
+      "get": {
+        "tags": [
+          "Cidades"
+        ],
+        "summary": "Retorna as cidades",
+        "description": "Retorna as cidades para filtrar os veículos",
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getCidadesResponse"
+          }
+        }
+      }
+    },
+
+    "/clientes-b2b": {
+      "get": {
+        "tags": [
+          "ClientesB2B"
+        ],
+        "summary": "Retorna o cliente associado ao usuário logado",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getClientesB2BResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ClientesB2B"
+        ],
+        "summary": "Cria um novo cliente no Portal B2B",
+        "description": "",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postClienteB2BRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/postClienteB2BResponse"
+          }
+        }
+      }
+    },
+
+    "/clientes-b2b/{clienteId}": {
+      "patch": {
+        "tags": [
+          "ClientesB2B"
+        ],
+        "summary": "Altera a Inscrição Estadual e Municipal do cliente",
+        "parameters": [
+          {
+            "name": "clienteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/patchClienteB2BRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/patchClienteB2BResponse"
+          }
+        }
+      }
+    },
+
+    "/configuracoes-b2b/padrao": {
+      "get": {
+        "tags": ["Configuracoes B2B"],
+        "summary": "Retorna as configurações padrão",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getConfiguracaoB2BPadraoResponse"
+          }
+        }
+      }
+    },
+
+    "/configuracoes-b2b": {
+      "get": {
+        "tags": [
+          "Configuracoes B2B"
+        ],
+        "summary": "Retorna configurações b2b",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getConfiguracoesB2BResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Configuracoes B2B"
+        ],
+        "summary": "Cria uma nova configuração B2B",
+        "description": "",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postConfiguracaoB2BRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/postConfiguracoesB2BResponse"
+          }
+        }
+      }
+    },
+
+    "/cnpj/{cnpj}": {
+      "get": {
+        "tags": [
+          "CNPJ / CPF / Email"
+        ],
+        "summary": "Consulta a situação de cadastro do CNPJ, tanto no B2B quanto na SERPRO",
+        "parameters": [
+          {
+            "name": "cnpj",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getCnpjResponse"
+          }
+        }
+      }
+    },
+
+    "/cpf/{cpf}": {
+      "get": {
+        "tags": [
+          "CNPJ / CPF / Email"
+        ],
+        "summary": "Consulta a situação de cadastro do CPF junto ao portal",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getCpfResponse"
+          }
+        }
+      }
+    },
+
+    "/email/{email}": {
+      "get": {
+        "tags": [
+          "CNPJ / CPF / Email"
+        ],
+        "summary": "Consulta a situação de cadastro do email junto ao portal",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getEmailResponse"
+          }
+        }
+      }
+    },
+
+    "/destaques-semana": {
+      "get": {
+        "tags": [
+          "Destaques da Semana"
+        ],
+        "summary": "Retorna as categorias destaques para o Cliente B2B (mockado)",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getDestaquesSemanaResponse"
+          }
+        }
+      }
+    },
+
+    "/clientes-b2b/{clienteId}/enderecos": {
+      "get": {
+        "tags": [
+          "Endereços ClienteB2B"
+        ],
+        "summary": "Retorna todos os endereços associados ao Cliente",
+        "parameters": [
+          {
+            "name": "clienteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getEnderecosByClienteB2B"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Endereços ClienteB2B"
+        ],
+        "summary": "Adiciona um novo endereço ao Cliente B2B",
+        "parameters": [
+          {
+            "name": "clienteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postEnderecoRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/postEnderecoResponse"
+          }
+        }
+      }
+    },
+
+    "/filtros": {
+      "get": {
+        "tags": [
+          "Filtros"
+        ],
+        "summary": "Retorna opções para composição de filtros",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getFiltrosResponse"
+          }
+        }
+      }
+    },
+
+    "/frequencias-compra": {
+      "get": {
+        "tags": [
+          "Frequências de Compra"
+        ],
+        "summary": "Retorna as frequencias de compra disponíveis no sistema",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getFrequenciasCompra"
+          }
+        }
+      }
+    },
+
+    "/formas-pagamento": {
+      "get": {
+        "tags": [
+          "Formas de Pagamento"
+        ],
+        "summary": "Retorna as formas de pagamento disponíveis no sistema",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getFormasPagamentoResponse"
+          }
+        }
+      }
+    },
+
+    "/historico-pesquisas": {
+      "get": {
+        "tags": [
+          "Historico de Pesquisas"
+        ],
+        "summary": "Retorna os últimos filtros usados pelo usuário",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getHistoricoPesquisaResponse"
+          }
+        }
+      }
+    },
+
+    "/clientes-b2b/{clienteB2bId}/info-adicionais": {
+      "get": {
+        "tags": [
+          "Informações Adicionais"
+        ],
+        "summary": "Retorna as informações adicionais do ClienteB2B",
+        "parameters": [
+          {
+            "name": "clienteB2bId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getInformacaoAdicionalResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Informações Adicionais"
+        ],
+        "summary": "Inclui ou Altera as informações adicionais do ClienteB2B",
+        "parameters": [
+          {
+            "name": "clienteB2bId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postInfoAdicionalRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/postInfoAdicionalResponse"
+          }
+        }
+      }
+    },
+
+    "/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Retorna um token baseado nas credenciais do usuário",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postLoginRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/postLoginResponse"
+          }
+        }
+      }
+    },
+
+    "/marcas/{marcaId}/modelos": {
+      "get": {
+        "tags": [
+          "Modelos de Veiculo"
+        ],
+        "summary": "Retorna todos os modelos disponíveis para determinada marca",
+        "parameters": [
+          {
+            "name": "marcaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getModelosVeiculoResponse"
+          }
+        }
+      }
+    },
+
+    "/tipos/{tipoId}/modelo": {
+      "get": {
+        "tags": [
+          "Modelos de Veiculo"
+        ],
+        "summary": "Retorna todos os modelos disponíveis para determinada tipo",
+        "parameters": [
+          {
+            "name": "tipoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getModelosVeiculoResponse"
+          }
+        }
+      }
+    },
+
+    "/pos-venda/{chamadoId}": {
+      "get": {
+        "tags": [
+          "Pos Venda"
+        ],
+        "summary": "Retornar os dados de um chamado específico",
+        "parameters": [
+          {
+            "name": "chamadoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getPosVendaResponse"
+          }
+        }
+      }
+    },
+
+    "/pos-venda/chave-reserva/{itemId}": {
+      "get": {
+        "deprecated": true,
+        "tags": [
+          "Pos Venda"
+        ],
+        "summary": "Retorna os chamados de chave-reserva relacionados ao veículo informado",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "description": "Item da venda",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getPosVendaResponse"
+          }
+        }
+      }
+    },
+
+    "/pos-venda/chave-reserva": {
+      "post": {
+        "deprecated": true,
+        "tags": [
+          "Pos Venda"
+        ],
+        "summary": "Abrir chamado no Topdesk para solicitar segunda via de chave reserva",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postPosVendaChaveReservaRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/postPosVendaChaveReservaResponse"
+          }
+        }
+      }
+    },
+
+    "/pos-venda/crv/{itemId}": {
+      "get": {
+        "tags": [
+          "Pos Venda"
+        ],
+        "summary": "Retorna todos os chamados de segunda via de CRV relacionados ao veículo informado",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "description": "Item da venda",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getPosVendaResponse"
+          }
+        }
+      }
+    },
+
+    "/pos-venda/crv": {
+      "post": {
+        "tags": [
+          "Pos Venda"
+        ],
+        "summary": "Abrir chamado no Topdesk para solicitar CRV",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postPosVendaCrvRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/postPosVendaCrvResponse"
+          }
+        }
+      }
+    },
+
+    "/pos-venda/multas/{veiculoId}": {
+      "get": {
+        "tags": [
+          "Pos Venda"
+        ],
+        "summary": "Retorna todos os chamados feitos para pagamento multas do veículo informado",
+        "parameters": [
+          {
+            "name": "veiculoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getPosVendaMultasResponse"
+          }
+        }
+      }
+    },
+
+    "/pos-venda/multas": {
+      "post": {
+        "tags": [
+          "Pos Venda"
+        ],
+        "summary": "Abrir chamado no Topdesk para solicitar pagamento de multa",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postPosVendaMultasRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/postPosVendaMultasResponse"
+          }
+        }
+      }
+    },
+
+    "/preferencias-categoria": {
+      "get": {
+        "tags": [
+          "Preferências Categoria"
+        ],
+        "summary": "Retorna as categorias com os níveis de interesse sinalizados pelo cliente",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getPreferenciaCategoriaResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Preferências Categoria"
+        ],
+        "summary": "Inclui uma nova preferência do usuário",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postPreferenciaCategoriaRequest"
+        },
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "Preferências de Categoria salva com sucesso!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/preferencias-marca": {
+      "get": {
+        "tags": [
+          "Preferências Marca"
+        ],
+        "summary": "Retorna as marcas preferenciais do usuário",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getPreferenciaMarcaResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Preferências Marca"
+        ],
+        "summary": "Inclui uma nova marca preferencial do usuário",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postPreferenciaMarcaRequest"
+        },
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "Preferências de Marca salva com sucesso!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/recuperar-senha": {
+      "post": {
+        "tags": [
+          "Senha"
+        ],
+        "summary": "Envia um email para redefinição de senha do usuário",
+        "description": "",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postRecuperarSenhaRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/postRecuperarSenhaResponse"
+          }
+        }
+      }
+    },
+
+    "/redefinir-senha": {
+      "patch": {
+        "tags": [
+          "Senha"
+        ],
+        "summary": "Altera a senha do usuario",
+        "description": "",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/patchRedefinirSenhaRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/patchRedefinirSenhaResponse"
+          }
+        }
+      }
+    },
+
+    "/marcas/{marcaId}/tipos": {
+      "get": {
+        "tags": [
+          "Tipos de Veiculo"
+        ],
+        "summary": "Retorna os tipos de veículo por marca",
+        "parameters": [
+          {
+            "name": "marcaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getTipoByMarcaResponse"
+          }
+        }
+      }
+    },
+
+    "/usuarios": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Retorna todos os usuários",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/usuariosResponse"
+          }
+        }
+      }
+    },
+
+    "/clientes-b2b/{clienteB2BId}/usuarios": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Retorna todos os usuários associados ao cliente",
+        "parameters": [
+          {
+            "name": "clienteB2BId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/usuariosResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Cria um novo usuário associado ao cliente informado",
+        "parameters": [
+          {
+            "name": "clienteB2BId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/usuarioRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/usuarioResponse"
+          }
+        }
+      }
+    },
+
+    "/clientes-b2b/{clienteB2BId}/usuarios/{usuarioId}": {
+      "put": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Atualiza informações do usuario",
+        "parameters": [
+          {
+            "name": "clienteB2BId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/usuarioRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/usuarioResponse"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Remove o usuario",
+        "parameters": [
+          {
+            "name": "clienteB2BId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "O Usuario informado foi removido com sucesso!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/clientes-b2b/{clienteB2BId}/usuarios/{usuarioId}/senha": {
+      "patch": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Altera a senha do usuário",
+        "parameters": [
+          {
+            "name": "clienteB2BId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/patchSenhaUsuarioRequest"
+        },
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "A senha do usuario foi alterada com sucesso."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/veiculo-reservado": {
+      "get": {
+        "tags": [
+          "Veiculo Reservado"
+        ],
+        "summary": "Retorna Veículos reservados pelo usuario",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getVeiculosReservadosResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Veiculo Reservado"
+        ],
+        "summary": "Reserva um novo veículo para o usuario",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postVeiculoReservadoRequest"
+        },
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "Veículo adicionado ao carrinho de compras"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/veiculos-reservado/{veiculoId}": {
+      "get": {
+        "tags": [
+          "Veiculo Reservado"
+        ],
+        "summary": "Consulta um veículo reservado",
+        "parameters": [
+          {
+            "name": "veiculoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getVeiculosReservadosResponse"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Veiculo Reservado"
+        ],
+        "summary": "Remove um veículo da reserva",
+        "parameters": [
+          {
+            "name": "veiculoReservadoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "Veículo removido do carrinho de compras"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/veiculos-favoritos": {
+      "get": {
+        "tags": [
+          "Veiculos Favoritos"
+        ],
+        "summary": "Retorna todos os veículo favoritos do usuário",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getVeiculosFavoritosResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Veiculos Favoritos"
+        ],
+        "summary": "Inclui um novo veículo favorito para o usuário",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postveiculoFavoritoRequest"
+        },
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "Veículo favoritado com sucesso"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Veiculos Favoritos"
+        ],
+        "summary": "Remove o veículo dos favoritos do usuário",
+        "parameters": [
+          {
+            "name": "veiculoId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "O veículo foi removido dos favoritos"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/veiculos": {
+      "get": {
+        "tags": [
+          "Veiculos"
+        ],
+        "summary": "Retorna todos os veículos disponíveis para o portal",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/numPage"
+          },
+          {
+            "$ref": "#/components/parameters/numLines"
+          },
+          {
+            "$ref": "#/components/parameters/ordenarPorPrecoKm"
+          },
+          {
+            "$ref": "#/components/parameters/ordenar"
+          },
+          {
+            "$ref": "#/components/parameters/marcaId"
+          },
+          {
+            "$ref": "#/components/parameters/veiculoId"
+          },
+          {
+            "$ref": "#/components/parameters/tipoId"
+          },
+          {
+            "$ref": "#/components/parameters/modeloId"
+          },
+          {
+            "$ref": "#/components/parameters/anoFabricacao"
+          },
+          {
+            "$ref": "#/components/parameters/anoModelo"
+          },
+          {
+            "$ref": "#/components/parameters/categoriaId"
+          },
+          {
+            "$ref": "#/components/parameters/unidadeId"
+          },
+          {
+            "$ref": "#/components/parameters/empresaId"
+          },
+          {
+            "$ref": "#/components/parameters/buscaTextoGenerico"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getVeiculosResponse"
+          }
+        }
+      }
+    },
+
+    "/veiculos/{veiculoId}": {
+      "get": {
+        "tags": [
+          "Veiculos"
+        ],
+        "summary": "Retorna as informações de um veículo pelo id",
+        "parameters": [
+          {
+            "name": "veiculoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getVeiculoResponse"
+          }
+        }
+      }
+    },
+
+    "/veiculos/{veiculoId}/avarias":{
+      "get":{
+        "tags":[
+          "Veiculos"
+        ],
+        "summary":"Retorna as avarias de um veiculo pelo id",
+        "parameters":[
+          {
+            "name": "veiculoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses":{
+          "200": {
+            "$ref": "#/components/responses/getVeiculoAvariaResponse"
+          }
+        }
+      }
+    },
+
+    "/vendas": {
+      "get": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "Retorna todas as vendas associadas ao cliente do usuário da requisição ou apenas a última venda",
+        "parameters": [
+          {
+            "name": "lastVenda",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getVendasResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "Cria uma nova venda",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/postVendaRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getVendaResponse"
+          }
+        }
+      }
+    },
+
+    "/vendas/{vendaId}": {
+      "get": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "Retorna os detalhes de uma venda pelo id",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getVendaResponse"
+          }
+        }
+      }
+    },
+
+    "/vendas/{vendaId}/contratos-tsrv": {
+      "get": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getVendasContratosTsrvResponse"
+          }
+        }
+      }
+    },
+
+    "/vendas/{vendaId}/item/{itemId}/contratos-tsrv": {
+      "patch": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "description": "Atializa o status da assinatura do contrato",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/patchContratosStatusResponse"
+          }
+        }
+      }
+    },
+
+    
+    "/vendas/{vendaId}/boletos": {
+      "get": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getBoletoResponse"
+          }
+        }
+      }
+    },
+
+    "/vendas/{vendaId}/item/{itemId}/boletos": {
+      "get": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getBoletoResponse"
+          }
+        }
+      }
+    },
+
+    "/vendas/{vendaId}/pix": {
+      "get": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getPixResponse"
+          }
+        }
+      }
+    },
+
+    "/vendas/{vendaId}/item/{itemId}/pix": {
+      "get": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getPixResponse"
+          }
+        }
+      }
+    },
+
+    "/vendas/{vendaId}/item/{itemId}/agendamento-retiradas": {
+      "get": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "$ref": "#/components/schemas/xxx"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Vendas"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/schemas/xxx"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/schemas/xxx"
+          }
+        }
+      }
+    },
+
+    "/vendas/{vendaId}/item/{itemId}/pagamento-email": {
+      "post": {
+        "tags": ["Vendas"],
+        "summary": "Boleto e Pix",
+        "description": "Endpoint para enviar por email o boleto da venda e/ou o QrCode do Pix",
+        "parameters": [
+          {
+            "name": "vendaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "Email enviado com sucesso. Confira sua caixa de entrada e sua caixa de span"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "parameters": {
+      "ordenarPorPrecoKm": {
+        "name": "ordenarPor",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "preco",
+            "km"
+          ]
+        }
+      },
+      "ordenar": {
+        "name": "ordenar",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        }
+      },
+      "marcaId": {
+        "name": "marcaId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "veiculoId": {
+        "name": "veiculoId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "tipoId": {
+        "name": "tipoId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "modeloId": {
+        "name": "modeloId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "acessorioId": {
+        "name": "acessorioId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "categoriaId": {
+        "name": "categoriaId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "cambioId": {
+        "name": "cambioId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "combustivelId": {
+        "name": "combustivelId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "corId": {
+        "name": "corId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "empresaId": {
+        "name": "empresaId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "unidadeId": {
+        "name": "unidadeId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "valorVenda": {
+        "name": "valorVenda",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "odometro": {
+        "name": "odometro",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "anoFabricacao": {
+        "name": "anoFabricacao",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "description": "yyyy",
+          "example": "2018"
+        }
+      },
+      "anoModelo": {
+        "name": "anoModelo",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "description": "yyyy",
+          "example": "2018"
+        }
+      },
+      "buscaTextoGenerico": {
+        "name": "buscaTextoGenerico",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "numPage": {
+        "name": "numPage",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "numLines": {
+        "name": "numLines",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "token": {
+        "name": "token",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+        }
+      }
+    },
+
+    "responses": {
+      "getStatusAnaliseCadastralResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/status-cadastro"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getMotivoAnaliseCadastralResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/motivo-status-cadastro"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getCidadesResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/cidade"
+                  },
+                  {
+                    "properties": {
+                      "estado": {
+                        "$ref": "#/components/schemas/estado"
+                      },
+                      "distancia": {
+                        "type": "number",
+                        "example": 27.773133586225
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+
+      "getClientesB2BResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/clienteB2B"
+                  },
+                  {
+                    "properties": {
+                      "cliente": {
+                        "$ref": "#/components/schemas/cliente"
+                      },
+                      "enderecos": {
+                        "items": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/endereco"
+                            },
+                            {
+                              "properties": {
+                                "municipio": {
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/cidade"
+                                    },
+                                    {
+                                      "properties": {
+                                        "estado": {
+                                          "$ref": "#/components/schemas/estado"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "usuarios": {
+                        "items": {
+                          "$ref": "#/components/schemas/usuario"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+
+      "postClienteB2BResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/clienteB2B"
+                },
+                {
+                  "properties": {
+                    "cliente": {
+                      "$ref": "#/components/schemas/cliente"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "enderecos": {
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/endereco"
+                          },
+                          {
+                            "properties": {
+                              "municipio": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/components/schemas/cidade"
+                                  },
+                                  {
+                                    "properties": {
+                                      "estado": {
+                                        "$ref": "#/components/schemas/estado"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      "patchClienteB2BResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/clienteB2B"
+                },
+                {
+                  "properties": {
+                    "cliente": {
+                      "$ref": "#/components/schemas/cliente"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "enderecos": {
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/endereco"
+                          },
+                          {
+                            "properties": {
+                              "municipio": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/components/schemas/cidade"
+                                  },
+                                  {
+                                    "properties": {
+                                      "estado": {
+                                        "$ref": "#/components/schemas/estado"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      "postConfiguracoesB2BResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "$ref": "#/components/schemas/configuracaoB2B"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getConfiguracaoB2BPadraoResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/configuracaoB2B"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getConfiguracoesB2BResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "$ref": "#/components/schemas/configuracaoB2B"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getCnpjResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "properties": {
+                    "cnpj": {
+                      "type": "string",
+                      "example": "33101607000117"
+                    },
+                    "razaoSocial": {
+                      "type": "string",
+                      "example": "Mercedes-Benz do Brasil Ltda"
+                    },
+                    "nomeFantasia": {
+                      "type": "string",
+                      "example": "Mercedes-Benz"
+                    },
+                    "situacaoCadastral": {
+                      "type": "string",
+                      "enum": [
+                        "Ativa",
+                        "Suspensa",
+                        "Inapta",
+                        "Baixada",
+                        "Nula"
+                      ]
+                    },
+                    "situacaoEspecial": {
+                      "type": "string",
+                      "enum": [
+                        "Início de Concordata",
+                        "Término de Concordata",
+                        "Em Liquidação",
+                        "Em Liquidação Extra-Judicial",
+                        "Falido",
+                        "Intervenção",
+                        "Financeiro e de Capitais",
+                        "Liquidação Judicial",
+                        "Liquidação Extra-Judicial",
+                        "Recuperacao Judicial"
+                      ]
+                    },
+                    "statusB2B": {
+                      "type": "string",
+                      "enum": [
+                        "CNPJ_CADASTRADO",
+                        "CNPJ_NAO_CADASTRADO"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getCpfResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "properties": {
+                    "cpf": {
+                      "type": "string",
+                      "example": "71716447070"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "example": "Andrea Souto Damásio"
+                    },
+                    "statusB2B": {
+                      "type": "string",
+                      "enum": [
+                        "CPF_CADASTRADO",
+                        "CPF_NAO_CADASTRADO"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getEmailResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "andrea@mail.com"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "example": "Andrea Souto Damásio"
+                    },
+                    "statusB2B": {
+                      "type": "string",
+                      "enum": [
+                        "EMAIL_CADASTRADO",
+                        "EMAIL_NAO_CADASTRADO"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getDestaquesSemanaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "properties": {
+                      "categoriaId": {
+                        "type": "number"
+                      },
+                      "categoria": {
+                        "type": "string",
+                        "example": "Suv"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getEnderecosByClienteB2B": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/endereco"
+                      },
+                      {
+                        "properties": {
+                          "municipio": {
+                            "allOf": [
+                              {
+                                "$ref": "#/components/schemas/cidade"
+                              },
+                              {
+                                "properties": {
+                                  "estado": {
+                                    "$ref": "#/components/schemas/estado"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getFrequenciasCompra": {
+        "description": "Retorna a frequência de compra",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/frequencias-compra"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getFiltrosResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "properties": {
+                    "marcas": {
+                      "items": {
+                        "properties": {
+                          "marcaId": {
+                            "type": "number",
+                            "example": 20
+                          },
+                          "marca": {
+                            "type": "string",
+                            "example": "Chevrolet"
+                          }
+                        }
+                      }
+                    },
+                    "combustiveis": {
+                      "items": {
+                        "properties": {
+                          "combustivelId": {
+                            "type": "number",
+                            "example": 20
+                          },
+                          "combustivel": {
+                            "type": "string",
+                            "example": "Gasolina"
+                          }
+                        }
+                      }
+                    },
+                    "cores": {
+                      "items": {
+                        "properties": {
+                          "corId": {
+                            "type": "number",
+                            "example": 20
+                          },
+                          "cor": {
+                            "type": "string",
+                            "example": "Amarela"
+                          }
+                        }
+                      }
+                    },
+                    "acessorios": {
+                      "items": {
+                        "properties": {
+                          "acessorioId": {
+                            "type": "number",
+                            "example": 20
+                          },
+                          "acessorio": {
+                            "type": "string",
+                            "example": "Ac Vidros Traseiros no Alarme"
+                          },
+                          "sigla": {
+                            "type": "string",
+                            "example": "ATA"
+                          },
+                          "isOpcional": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "cambios": {
+                      "items": {
+                        "properties": {
+                          "cambioId": {
+                            "type": "number",
+                            "example": 20
+                          },
+                          "cambio": {
+                            "type": "string",
+                            "example": "Automático"
+                          }
+                        }
+                      }
+                    },
+                    "odometro": {
+                      "items": {
+                        "properties": {
+                          "odometroInicial": {
+                            "type": "number",
+                            "example": 20
+                          },
+                          "odometroFinal": {
+                            "type": "number",
+                            "example": 2000
+                          }
+                        }
+                      }
+                    },
+                    "avarias": {
+                      "items": {
+                        "properties": {
+                          "itemAvariaId": {
+                            "type": "number",
+                            "example": 20
+                          },
+                          "avaria": {
+                            "type": "string",
+                            "example": "Banco Dianteiro do Passageiro"
+                          }
+                        }
+                      }
+                    },
+                    "categorias": {
+                      "items": {
+                        "properties": {
+                          "categoriaId": {
+                            "type": "number",
+                            "example": 20
+                          },
+                          "categoria": {
+                            "type": "string",
+                            "example": "Caminhão"
+                          },
+                          "letra": {
+                            "type": "string",
+                            "example": "L"
+                          }
+                        }
+                      }
+                    },
+                    "valorVenda": {
+                      "items": {
+                        "properties": {
+                          "valorVendaInicial": {
+                            "type": "number",
+                            "example": 20
+                          },
+                          "valorVendaFinal": {
+                            "type": "number",
+                            "example": 185999
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getFormasPagamentoResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "properties": {
+                      "formaPagamentoId": {
+                        "type": "number",
+                        "example": 510
+                      },
+                      "formaPagamento": {
+                        "type": "string",
+                        "example": "Boleto 30 Dias (Cód. 510)"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getHistoricoPesquisaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "properties": {
+                      "filtroId": {
+                        "type": "number"
+                      },
+                      "valor": {
+                        "type": "string",
+                        "example": "Fiat Uno"
+                      },
+                      "inseridoEm": {
+                        "type": "string",
+                        "description": "ISO 8601 date format",
+                        "example": "2021-03-08T18:04:10.395Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getInformacaoAdicionalResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/info-adicional"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getModelosVeiculoResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/modelo"
+                      },
+                      {
+                        "properties": {
+                          "marca": {
+                            "$ref": "#/components/schemas/marca"
+                          },
+                          "categoria": {
+                            "$ref": "#/components/schemas/categoria"
+                          },
+                          "cambio": {
+                            "$ref": "#/components/schemas/cambio"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getPosVendaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/posVenda"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getPosVendaMultasResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/posVendaMulta"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "postInfoAdicionalResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/info-adicional"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "postPosVendaChaveReservaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "string",
+                  "example": "Chamado criado com sucesso"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "postPosVendaMultasResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "string",
+                  "example": "Chamado criado com sucesso"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "postPosVendaCrvResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "string",
+                  "example": "Chamado criado com sucesso"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getPreferenciaCategoriaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "allOf": [
+                      {
+                        "properties": {
+                          "preferenciaCategoriaUsuarioB2BId": {
+                            "type": "number"
+                          },
+                          "nivelPreferencia": {
+                            "type": "number",
+                            "description": "Quanto maior o número, maior o interesse do cliente: 1- 5"
+                          },
+                          "inseridoEm": {
+                            "type": "string",
+                            "description": "ISO 8601 date format",
+                            "example": "2021-03-02T12:33:16.027Z"
+                          },
+                          "categoriaVeiculo": {
+                            "$ref": "#/components/schemas/categoria"
+                          },
+                          "usuarioB2B": {
+                            "allOf": [
+                              {
+                                "$ref": "#/components/schemas/usuario"
+                              },
+                              {
+                                "properties": {
+                                  "clienteB2B": {
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/components/schemas/clienteB2B"
+                                      },
+                                      {
+                                        "properties": {
+                                          "cliente": {
+                                            "$ref": "#/components/schemas/clienteB2B"
+                                          },
+                                          "enderecos": {
+                                            "items": {
+                                              "allOf": [
+                                                {
+                                                  "$ref": "#/components/schemas/endereco"
+                                                },
+                                                {
+                                                  "properties": {
+                                                    "municipio": {
+                                                      "allOf": [
+                                                        {
+                                                          "$ref": "#/components/schemas/cidade"
+                                                        },
+                                                        {
+                                                          "properties": {
+                                                            "estado": {
+                                                              "$ref": "#/components/schemas/estado"
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getPreferenciaMarcaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "properties": {
+                      "marca": {
+                        "$ref": "#/components/schemas/marca"
+                      },
+                      "preferenciaMarcaUsuarioId": {
+                        "type": "number",
+                        "example": 10
+                      },
+                      "inseridoEm": {
+                        "type": "string",
+                        "description": "ISO 8601 date format",
+                        "example": "2021-03-02T12:33:27.590Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "postRecuperarSenhaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "string",
+                  "example": "Email para redefinição de senha enviado com sucesso para o usuário."
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "patchRedefinirSenhaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "string",
+                  "example": "A senha do usuario foi alterada com sucesso."
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getTipoByMarcaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "properties": {
+                      "veiculoTipoId": {
+                        "type": "number",
+                        "example": "426"
+                      },
+                      "veiculoTipo": {
+                        "type": "string",
+                        "example": "HR-V"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "usuariosResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/usuario"
+                      },
+                      {
+                        "properties": {
+                          "clienteB2B": {
+                            "allOf": [
+                              {
+                                "$ref": "#/components/schemas/clienteB2B"
+                              },
+                              {
+                                "properties": {
+                                  "cliente": {
+                                    "$ref": "#/components/schemas/cliente"
+                                  },
+                                  "enderecos": {
+                                    "items": {
+                                      "allOf": [
+                                        {
+                                          "$ref": "#/components/schemas/endereco"
+                                        },
+                                        {
+                                          "properties": {
+                                            "municipio": {
+                                              "allOf": [
+                                                {
+                                                  "$ref": "#/components/schemas/cidade"
+                                                },
+                                                {
+                                                  "properties": {
+                                                    "estado": {
+                                                      "$ref": "#/components/schemas/estado"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "usuarioResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/usuario"
+                    },
+                    {
+                      "properties": {
+                        "clienteB2Ba": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/clienteB2B"
+                            },
+                            {
+                              "properties": {
+                                "cliente": {
+                                  "$ref": "#/components/schemas/cliente"
+                                },
+                                "enderecos": {
+                                  "items": {
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/components/schemas/endereco"
+                                      },
+                                      {
+                                        "properties": {
+                                          "municipio": {
+                                            "allOf": [
+                                              {
+                                                "$ref": "#/components/schemas/cidade"
+                                              },
+                                              {
+                                                "properties": {
+                                                  "estado": {
+                                                    "$ref": "#/components/schemas/estado"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getUsuariosByClienteResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/usuario"
+                  },
+                  {
+                    "properties": {
+                      "clienteB2b": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/clienteB2B"
+                          },
+                          {
+                            "properties": {
+                              "cliente": {
+                                "$ref": "#/components/schemas/cliente"
+                              },
+                              "endereco": {
+                                "type": "array",
+                                "items": {
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/endereco"
+                                    },
+                                    {
+                                      "properties": {
+                                        "municipio": {
+                                          "allOf": [
+                                            {
+                                              "$ref": "#/components/schemas/cidade"
+                                            },
+                                            {
+                                              "properties": {
+                                                "estado": {
+                                                  "$ref": "#/components/schemas/estado"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+
+      "getVeiculosReservadosResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "properties": {
+                      "veiculoReservadoId": {
+                        "type": "number"
+                      },
+                      "expiraEm": {
+                        "type": "string",
+                        "example": "2021-03-09T21:33:24.000Z"
+                      },
+                      "inseridoEm": {
+                        "type": "string",
+                        "example": "2021-03-09T19:33:24.000Z"
+                      },
+                      "veiculo": {
+                        "$ref": "#/components/schemas/veiculoCompleto"
+                      },
+                      "usuario": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/usuario"
+                          },
+                          {
+                            "properties": {
+                              "clienteB2b": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/components/schemas/clienteB2B"
+                                  },
+                                  {
+                                    "properties": {
+                                      "cliente": {
+                                        "$ref": "#/components/schemas/cliente"
+                                      },
+                                      "enderecos": {
+                                        "items": {
+                                          "allOf": [
+                                            {
+                                              "$ref": "#/components/schemas/endereco"
+                                            },
+                                            {
+                                              "properties": {
+                                                "municipio": {
+                                                  "allOf": [
+                                                    {
+                                                      "$ref": "#/components/schemas/cidade"
+                                                    },
+                                                    {
+                                                      "properties": {
+                                                        "estado": {
+                                                          "$ref": "#/components/schemas/estado"
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getVeiculosFavoritosResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/paginacao"
+                },
+                {
+                  "properties": {
+                    "veiculos": {
+                      "items": {
+                        "$ref": "#/components/schemas/veiculoCompleto"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      "getVeiculosResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/paginacao"
+                    },
+                    {
+                      "properties": {
+                        "veiculos": {
+                          "items": {
+                            "$ref": "#/components/schemas/veiculoCompleto"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getVeiculoResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/veiculoCompleto"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getVeiculoAvariaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "properties": {
+                    "avarias": {
+                     "items":{
+                          "type":"string",
+                          "example": "Arranhão no capô"
+                     }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getVendasResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "$ref": "#/components/schemas/vendaCompleta"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getVendasContratosTsrvResponse": {
+        "description": "any",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/documento"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "patchContratosStatusResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/documento"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getVendaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/vendaCompleta"
+            }
+          }
+        }
+      },
+
+      "postEnderecoResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/endereco"
+                    },
+                    {
+                      "properties": {
+                        "municipio": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/cidade"
+                            },
+                            {
+                              "properties": {
+                                "estado": {
+                                  "$ref": "#/components/schemas/estado"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "postLoginResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "usuario": {
+                      "type": "string",
+                      "description": "nome de usuário"
+                    },
+                    "token": {
+                      "type": "string",
+                      "example": "eyJh ... o0w_w"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getBoletoResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type":"object",
+              "properties": {
+                "data": {
+                  "type":"object",
+                  "properties": {
+                    "arquivo": {
+                      "type":"string",
+                      "example":"JVBERi0xLjMKJf////8KNyAwIG9iago8PAovUHJlZGljdG9yIDE1Ci9Db2xvcnMgM ... HLL08J1LIpLfeF/JHSULISl/sgKAuWVKJQOCVWUNou0DRQdHd+p1/2GCO5EwO6DAY"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getPixResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type":"object",
+              "properties": {
+                "data": {
+                  "type":"object",
+                  "properties": {
+                    "qrcode": {
+                      "type":"string",
+                      "example":"00020101021226770014BR.GOV.BCB.PIX2555api.itau/pix/qr/v2/f49f4368-50d7 ... 000053039865802BR5917UNIDAS RENT A CAR6009SAO PAULO62070503***630452A0"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "requestBodies": {
+      "postLoginRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "andrea@mail.com"
+                },
+                "senha": {
+                  "type": "string",
+                  "example": "unidas123"
+                }
+              }
+            }
+          }
+        }
+      },
+      "postClienteB2BRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cnpj": {
+                  "type": "string",
+                  "example": "81509972000108"
+                },
+                "razaoSocial": {
+                  "type": "string",
+                  "example": "Império do Brasil"
+                },
+                "nomeFantasia": {
+                  "type": "string",
+                  "example": "Brasil Monárquico"
+                },
+                "responsavel": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "dompedro2@brasil.com.br"
+                    },
+                    "senha": {
+                      "type": "string",
+                      "example": "01234567890"
+                    },
+                    "nomeCompleto": {
+                      "type": "string",
+                      "example": "Dom Pedro II"
+                    },
+                    "cpf": {
+                      "type": "string",
+                      "example": "59405228668"
+                    },
+                    "telefoneFixo": {
+                      "type": "string",
+                      "example": "3133334444"
+                    },
+                    "celular": {
+                      "type": "string",
+                      "example": "31988887777"
+                    }
+                  }
+                },
+                "cep": {
+                  "type": "string",
+                  "example": "20940050"
+                },
+                "logradouro": {
+                  "type": "string",
+                  "example": "Av. Pedro II"
+                },
+                "numero": {
+                  "type": "number",
+                  "example": "99"
+                },
+                "complemento": {
+                  "type": "string",
+                  "example": "Palácio Quinta da Boa Vista"
+                },
+                "bairro": {
+                  "type": "string",
+                  "example": "São Cristóvão"
+                },
+                "municipioIBGE": {
+                  "type": "number",
+                  "example": "3304557"
+                },
+                "estadoIBGE": {
+                  "type": "number",
+                  "example": "33"
+                }
+              }
+            }
+          }
+        }
+      },
+      "postConfiguracaoB2BRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeConfiguracao": {
+                  "type": "string",
+                  "example": "high security"
+                },
+                "padrao": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "ativo": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "configuracaoEmail": {
+                  "$ref": "#/components/schemas/emailConfig"
+                },
+                "prazoVencimentoBoleto": {
+                  "type": "integer",
+                  "example": 10072021
+                },
+                "prazoVencimentoPix": {
+                  "type": "integer",
+                  "example": 10072021
+                },
+                "definirPrazoExpiracaoCarrinho": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "tempoExpiracaoCarrinho": {
+                  "type": "integer",
+                  "example": 31958331276
+                },
+                "limitarQtdeVeiculosCarrinho": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "qtdeVeiculosCarrinho": {
+                  "type": "integer",
+                  "example": 3
+                },
+                "exibirValoresVeiculo": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "exibirValoresUnidas": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "exibirValorFIPE": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "exibirValorZeroKm": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "prazoMinimoRetiradaVeiculo": {
+                  "type": "integer",
+                  "example": 2
+                },
+                "prazoMaximoRetiradaVeiculo": {
+                  "type": "integer",
+                  "example": 4
+                },
+                "posVendaEnviarEmailCliente": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "posVendaEnviarEmailGerente": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "limitarQtdeVeiculosPorCliente": {
+                  "type": "boolean"
+                },
+                "qtdeVeiculosPorCliente": {
+                  "type": "number"
+                },
+                "periodoVigenciaEmDias": {
+                  "type": "number"
+                },
+                "inseridoPor": {
+                  "type": "integer",
+                  "example": "1013103172"
+                },
+                "inseridoEm": {
+                  "type": "string",
+                  "description": "ISO 8601 date format",
+                  "example": "2021-03-08T18:04:10.395Z"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patchClienteB2BRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "inscricaoEstadual": {
+                  "type": "string",
+                  "example": "5682067927359"
+                },
+                "inscricaoMunicipal": {
+                  "type": "string",
+                  "example": "4508699"
+                }
+              }
+            }
+          }
+        }
+      },
+      "postEnderecoRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "municipioId": {
+                  "type": "number",
+                  "example": 150
+                },
+                "cep": {
+                  "type": "string",
+                  "example": "36973000"
+                },
+                "bairro": {
+                  "type": "string",
+                  "example": "Maria João José"
+                },
+                "logradouro": {
+                  "type": "string",
+                  "example": "Avenida Sete de Setembro"
+                },
+                "complemento": {
+                  "type": "string",
+                  "example": "casa B"
+                },
+                "numero": {
+                  "type": "number",
+                  "example": 20
+                },
+                "isEnderecoPrincipal": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "postInfoAdicionalRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "estoqueAtual": {
+                  "type": "number"
+                },
+                "mediaVeiculosCompradosMes": {
+                  "type": "number"
+                },
+                "frequenciaCompraId": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "postPosVendaChaveReservaRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "request": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "placa": {
+                  "type": "string",
+                  "example": "BRA-1234"
+                },
+                "modelo": {
+                  "type": "string",
+                  "example": "Novo Gol G6 Flex 1.0 4P"
+                },
+                "veiculoId": {
+                  "type": "number",
+                  "example": 536179
+                }
+              }
+            }
+          }
+        }
+      },
+      "postPosVendaCrvRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "request": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "placa": {
+                  "type": "string",
+                  "example": "BRA-1234"
+                },
+                "modelo": {
+                  "type": "string",
+                  "example": "Novo Gol G6 Flex 1.0 4P"
+                },
+                "veiculoId": {
+                  "type": "number",
+                  "example": 536179
+                }
+              }
+            }
+          }
+        }
+      },
+      "postPosVendaMultasRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "request": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "placa": {
+                  "type": "string",
+                  "example": "BRA-1234"
+                },
+                "modelo": {
+                  "type": "string",
+                  "example": "Novo Gol G6 Flex 1.0 4P"
+                },
+                "dataHoraInfracao": {
+                  "type": "string",
+                  "example": "date"
+                },
+                "numeroAit": {
+                  "type": "string",
+                  "example": "5LNNNNNN"
+                },
+                "veiculoId": {
+                  "type": "number",
+                  "example": 536179
+                }
+              }
+            }
+          }
+        }
+      },
+      "postPreferenciaCategoriaRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "categoriaId": {
+                  "type": "number",
+                  "example": 3
+                },
+                "nivelPreferencia": {
+                  "type": "number",
+                  "description": "Valor entre 1 - 5, quanto maior o valor, maior o nível de interesse",
+                  "example": 4
+                }
+              }
+            }
+          }
+        }
+      },
+      "postPreferenciaMarcaRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "items": {
+                "properties": {
+                  "marcaId": {
+                    "type": "number",
+                    "example": 3
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "postRecuperarSenhaRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "userDev@unidas.com.br"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patchRedefinirSenhaRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "novaSenha": {
+                  "type": "string",
+                  "example": "123456"
+                }
+              }
+            }
+          }
+        }
+      },
+      "usuarioRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "nomeCompleto": {
+                  "type": "string",
+                  "example": "Andrea Souto Damásio"
+                },
+                "cpf": {
+                  "type": "string",
+                  "example": "71716447070"
+                },
+                "isUsuarioADM": {
+                  "type": "boolean"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "andrea@mail.com"
+                },
+                "telefoneFixo": {
+                  "type": "string",
+                  "example": "3353213065"
+                },
+                "celular": {
+                  "type": "string",
+                  "example": "31958331276"
+                },
+                "whatsapp": {
+                  "type": "string",
+                  "example": "31958331276"
+                },
+                "isAtivo": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patchSenhaUsuarioRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "novaSenha": {
+                  "type": "string",
+                  "example": "unidas321"
+                }
+              }
+            }
+          }
+        }
+      },
+      "postVeiculoReservadoRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "veiculoId": {
+                  "type": "number",
+                  "example": 53112
+                }
+              }
+            }
+          }
+        }
+      },
+      "postveiculoFavoritoRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "veiculoId": {
+                  "type": "number",
+                  "example": 52259
+                }
+              }
+            }
+          }
+        }
+      },
+      "postVendaRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "formaPagamentoId": {
+                  "type": "number",
+                  "example": "506"
+                },
+                "itensVenda": {
+                  "items": {
+                    "properties": {
+                      "veiculoId": {
+                        "type": "number",
+                        "example": 976599
+                      },
+                      "valorVenda": {
+                        "type": "number",
+                        "example": 100000
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "schemas": {
+      "clienteB2B": {
+        "type": "object",
+        "properties": {
+          "clienteB2BId": {
+            "type": "integer"
+          },
+          "cnpj": {
+            "type": "string",
+            "example": "59104273000129"
+          },
+          "razaoSocial": {
+            "type": "string",
+            "example": "Mercedes-Benz do Brasil Ltda"
+          },
+          "nomeFantasia": {
+            "type": "string",
+            "example": "Mercedes-Benz"
+          },
+          "isAtivo": {
+            "type": "boolean"
+          },
+          "inseridoEm": {
+            "type": "string",
+            "description": "ISO 8601 date format",
+            "example": "2021-03-08T18:04:10.395Z"
+          },
+          "modificadoEm": {
+            "type": "string",
+            "description": "ISO 8601 date format",
+            "example": "2021-03-08T18:04:10.395Z"
+          }
+        }
+      },
+      "configuracaoB2B": {
+        "type": "object",
+        "properties": {
+          "configuracaoId": {
+            "type": "integer"
+          },
+          "nomeConfiguracao": {
+            "type": "string",
+            "example": "high security"
+          },
+          "isPadrao": {
+            "type": "boolean",
+            "example": "false"
+          },
+          "isAtivo": {
+            "type": "boolean",
+            "example": true
+          },
+          "configuracaoEmail": {
+            "$ref": "#/components/schemas/emailConfig"
+          },
+          "prazoVencimentoBoleto": {
+            "type": "integer",
+            "example": 10072021
+          },
+          "prazoVencimentoPix": {
+            "type": "integer",
+            "example": 10072021
+          },
+          "definirPrazoExpiracaoCarrinho": {
+            "type": "boolean",
+            "example": true
+          },
+          "tempoExpiracaoCarrinho": {
+            "type": "integer",
+            "example": 31958331276
+          },
+          "limitarQtdeVeiculosCarrinho": {
+            "type": "boolean",
+            "example": true
+          },
+          "qtdeVeiculosCarrinho": {
+            "type": "integer",
+            "example": 3
+          },
+          "exibirValoresVeiculo": {
+            "type": "boolean",
+            "example": true
+          },
+          "exibirValoresUnidas": {
+            "type": "boolean",
+            "example": true
+          },
+          "exibirValorFIPE": {
+            "type": "boolean",
+            "example": false
+          },
+          "exibirValorZeroKm": {
+            "type": "boolean",
+            "example": true
+          },
+          "prazoMinimoRetiradaVeiculo": {
+            "type": "integer",
+            "example": 2
+          },
+          "prazoMaximoRetiradaVeiculo": {
+            "type": "integer",
+            "example": 4
+          },
+          "posVendaEnviarEmailCliente": {
+            "type": "boolean",
+            "example": false
+          },
+          "posVendaEnviarEmailGerente": {
+            "type": "boolean",
+            "example": false
+          },
+          "limitarQtdeVeiculosPorCliente": {
+            "type": "boolean"
+          },
+          "qtdeVeiculosPorCliente": {
+            "type": "number"
+          },
+          "periodoVigenciaEmDias": {
+            "type": "number"
+          },
+          "inseridoPor": {
+            "type": "integer",
+            "example": "1013103172"
+          },
+          "inseridoEm": {
+            "type": "string",
+            "description": "ISO 8601 date format",
+            "example": "2021-03-08T18:04:10.395Z"
+          }
+        }
+      },
+      "cliente": {
+        "type": "object",
+        "properties": {
+          "clienteId": {
+            "type": "integer"
+          },
+          "razaoSocial": {
+            "type": "string",
+            "example": "Mercedes-Benz do Brasil Ltda"
+          },
+          "nomeFantasia": {
+            "type": "string",
+            "example": "Mercedes-Benz"
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "J",
+              "F"
+            ]
+          },
+          "cnpj": {
+            "type": "string",
+            "example": "59104273000129"
+          },
+          "inscricaoEstadual": {
+            "type": "string",
+            "example": "5682067927359"
+          },
+          "inscricaoMunicipal": {
+            "type": "string",
+            "example": "4508699"
+          },
+          "situacao": {
+            "type": "string",
+            "enum": [
+              "A",
+              "C",
+              "D",
+              "I",
+              "R"
+            ]
+          },
+          "inseridoEm": {
+            "type": "string",
+            "description": "ISO 8601 date format",
+            "example": "2021-03-08T18:04:10.395Z"
+          },
+          "modificadoEm": {
+            "type": "string",
+            "description": "ISO 8601 date format",
+            "example": "2021-03-08T18:04:10.395Z"
+          }
+        }
+      },
+      "documento": {
+        "type": "object",
+        "properties": {
+          "documentoId": {
+            "type": "number",
+            "example": 22
+          },
+          "codigoFichaVenda": {
+            "type": "number",
+            "example": 99
+          },
+          "codigoRelatorio": {
+            "type": "number",
+            "example": 21
+          },
+          "documentoClicksignKey": {
+            "type": "string",
+            "example": "D4B25630-A5BF-4346-97C9-BBD62B6E4294"
+          },
+          "documentoConcluido": {
+            "type": "boolean",
+            "example": true
+          },
+          "documentoValido": {
+            "type": "boolean",
+            "example": true
+          },
+          "requestSignatureKey": {
+            "type": "string",
+            "example": "6D1504B4-C165-4DC4-86C3-284DC3FD4381"
+          }
+        }
+      },
+      "usuario": {
+        "type": "object",
+        "properties": {
+          "usuarioId": {
+            "type": "integer"
+          },
+          "cpf": {
+            "type": "string",
+            "example": "71716447070"
+          },
+          "nomeCompleto": {
+            "type": "string",
+            "example": "Andrea Souto Damásio"
+          },
+          "email": {
+            "type": "string",
+            "example": "andrea@mail.com"
+          },
+          "telefoneFixo": {
+            "type": "string",
+            "example": "3353213065"
+          },
+          "celular": {
+            "type": "string",
+            "example": "31958331276"
+          },
+          "whatsapp": {
+            "type": "string",
+            "example": "31958331276"
+          },
+          "isUsuarioADM": {
+            "type": "boolean"
+          },
+          "isAtivo": {
+            "type": "boolean"
+          },
+          "inseridoEm": {
+            "type": "string",
+            "description": "ISO 8601 date format",
+            "example": "2021-03-08T18:04:10.395Z"
+          },
+          "modificadoEm": {
+            "type": "string",
+            "description": "ISO 8601 date format",
+            "example": "2021-03-08T18:04:10.395Z"
+          }
+        }
+      },
+      "unidade": {
+        "properties": {
+          "nome": {
+            "example": "Unidas Lagoa"
+          },
+          "cnpj": {
+            "type": "string",
+            "example": "33101607000117"
+          },
+          "unidadeId": {
+            "type": "number",
+            "example": -22.821143
+          },
+          "inscricaoEstadual": {
+            "type": "string",
+            "example": "5682067927359"
+          },
+          "inscricaoMunicipal": {
+            "type": "string",
+            "example": "4508699"
+          },
+          "siglaLoja": {
+            "type": "string",
+            "example": "VLBT"
+          },
+          "razaoSocial": {
+            "type": "string",
+            "example": "Mercedes-Benz do Brasil Ltda"
+          },
+          "email": {
+            "type": "string",
+            "example": "andrea@mail.com"
+          },
+          "latitude": {
+            "type": "number",
+            "example": -22.821143
+          },
+          "longitude": {
+            "type": "number",
+            "example": -43.28253
+          },
+          "telefone": {
+            "type": "string",
+            "example": "3353213065"
+          }
+        }
+      },
+      "empresa": {
+        "properties": {
+          "empresaId": {
+            "type": "number"
+          },
+          "razaoSocial": {
+            "type": "string",
+            "example": "Mercedes-Benz do Brasil Ltda"
+          },
+          "nomeFantasia": {
+            "type": "string",
+            "example": "Mercedes-Benz"
+          }
+        }
+      },
+      "estado": {
+        "type": "object",
+        "properties": {
+          "siglaUF": {
+            "type": "string",
+            "example": "MG"
+          },
+          "nomeUF": {
+            "type": "string",
+            "example": "Minas Gerais"
+          }
+        }
+      },
+      "cidade": {
+        "type": "object",
+        "properties": {
+          "municipioId": {
+            "type": "integer"
+          },
+          "codigoIBGE": {
+            "type": "integer",
+            "example": 1300839
+          },
+          "nomeMunicipio": {
+            "type": "string",
+            "example": "Caapiranga"
+          }
+        }
+      },
+      "endereco": {
+        "type": "object",
+        "properties": {
+          "enderecoId": {
+            "type": "integer"
+          },
+          "bairro": {
+            "type": "string",
+            "example": "Maria João José"
+          },
+          "cep": {
+            "type": "string",
+            "example": "36973000"
+          },
+          "numero": {
+            "type": "integer",
+            "example": 20
+          },
+          "complemento": {
+            "type": "string",
+            "example": "casa B"
+          },
+          "isEnderecoPrincipal": {
+            "type": "boolean"
+          },
+          "logradouro": {
+            "type": "string",
+            "example": "Avenida Sete de Setembro"
+          }
+        }
+      },
+      "veiculo": {
+        "properties": {
+          "veiculoId": {
+            "type": "number",
+            "example": 53112
+          },
+          "anoFabricacao": {
+            "type": "string",
+            "example": "2011"
+          },
+          "anoModelo": {
+            "type": "string",
+            "example": "2012"
+          },
+          "chassi": {
+            "type": "string",
+            "example": "9BWAA05W3CP063481"
+          },
+          "odometro": {
+            "type": "number",
+            "example": 60662
+          },
+          "placa": {
+            "type": "string",
+            "example": "HGM9738"
+          },
+          "renavam": {
+            "type": "string",
+            "example": "372619665"
+          },
+          "valorVenda": {
+            "type": "number",
+            "example": 32600
+          },
+          "observacaoB2B": {
+            "type": "string"
+          },
+          "isFavorito": {
+            "type": "boolean"
+          },
+          "isReservado": {
+            "type": "boolean"
+          }
+        }
+      },
+
+      "motivo-status-cadastro": {
+        "properties": {
+          "motivoStatusClienteB2BId": {
+            "type": "number",
+            "example": 1
+          },
+          "descricaoMotivoStatus": {
+            "type": "string",
+            "example": "Cadastro a partir do Portal"
+          },
+          "inseridoEm": {
+            "type": "string",
+            "example": "2021-03-31T21:09:26.823Z"
+          },
+          "modificadoEm": {
+            "type": "string",
+            "example": "2021-03-31T21:09:25.917Z"
+          },
+          "statusClienteB2B": {
+            "$ref": "#/components/schemas/status-cadastro"
+          }
+        }
+      },
+      "status-cadastro": {
+        "properties": {
+          "statusClienteB2BId": {
+            "type": "number",
+            "example": 1
+          },
+          "descricaoStatus": {
+            "type": "string",
+            "example": "Novo"
+          },
+          "inseridoEm": {
+            "type": "string",
+            "example": "2021-03-31T21:09:25.917Z"
+          },
+          "modificadoEm": {
+            "type": "string",
+            "example": "2021-03-31T21:09:25.917Z"
+          }
+        }
+      },
+      "modelo": {
+        "properties": {
+          "modeloId": {
+            "example": 353
+          },
+          "modelo": {
+            "example": "Fox Plus 1.6 4P"
+          },
+          "tipo": {
+            "example": "Fox"
+          },
+          "versao": {
+            "example": "Plus 1.6 4P"
+          },
+          "codigoFIPE": {
+            "example": "005207-8"
+          },
+          "numeroPortas": {
+            "example": 4
+          }
+        }
+      },
+      "marca": {
+        "properties": {
+          "marcaId": {
+            "type": "number"
+          },
+          "marca": {
+            "type": "string",
+            "example": "Volkswagen"
+          }
+        }
+      },
+      "categoria": {
+        "properties": {
+          "categoriaId": {
+            "type": "number",
+            "example": 3
+          },
+          "categoria": {
+            "type": "string",
+            "example": "Intermediário"
+          },
+          "letra": {
+            "type": "string",
+            "example": "C"
+          }
+        }
+      },
+      "cambio": {
+        "properties": {
+          "cambioId": {
+            "type": "number",
+            "example": 1
+          },
+          "cambio": {
+            "type": "string",
+            "example": "Manual"
+          }
+        }
+      },
+      "acessorio": {
+        "properties": {
+          "acessorioId": {
+            "type": "number",
+            "example": 3
+          },
+          "acessorio": {
+            "type": "string",
+            "example": "Ar Condicionado"
+          },
+          "sigla": {
+            "type": "string",
+            "example": "AR"
+          },
+          "isOpcional": {
+            "type": "boolean"
+          }
+        }
+      },
+      "cor": {
+        "properties": {
+          "corId": {
+            "type": "number",
+            "example": 9
+          },
+          "cor": {
+            "type": "string",
+            "example": "Prata"
+          }
+        }
+      },
+      "combustivel": {
+        "properties": {
+          "combustivelId": {
+            "type": "number",
+            "example": 16
+          },
+          "combustivel": {
+            "type": "string",
+            "example": "Álc/Gasol"
+          }
+        }
+      },
+      "emailConfig": {
+        "properties": {
+          "servidor": {
+            "type": "string"
+          },
+          "porta": {
+            "type": "number"
+          },
+          "timeout": {
+            "type": "number"
+          },
+          "usuario": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          },
+          "isAutenticado": {
+            "type": "boolean"
+          },
+          "isTLS": {
+            "type": "boolean"
+          },
+          "nomeRemetente": {
+            "type": "string"
+          },
+          "emailRemetente": {
+            "type": "string"
+          }
+        }
+      },
+      "frequencias-compra": {
+        "properties": {
+          "frequenciaCompraId": {
+            "type": "number",
+            "example": 1
+          },
+          "descricao": {
+            "type": "string",
+            "example": "Diária"
+          },
+          "inseridoEm": {
+            "type": "string",
+            "example": "2021-03-18T14:19:20.523Z"
+          },
+          "modificadoEm": {
+            "type": "string",
+            "example": "2021-03-18T14:19:20.523Z"
+          }
+        }
+      },
+      "fipe": {
+        "properties": {
+          "fipeId": {
+            "type": "number",
+            "example": 5612393
+          },
+          "codigoFipe": {
+            "type": "string",
+            "example": "003408-8"
+          },
+          "valor": {
+            "type": "number",
+            "example": 44608
+          },
+          "ano": {
+            "type": "number",
+            "example": 2021
+          },
+          "inseridoEm": {
+            "type": "string",
+            "description": "ISO 8601 date format",
+            "example": "2020-11-03T11:10:52.997Z"
+          }
+        }
+      },
+      "info-adicional": {
+        "properties": {
+          "infoAdicionalId": {
+            "type": "number",
+            "example": 1
+          },
+          "clienteB2B": {
+            "$ref": "#/components/schemas/clienteB2B"
+          },
+          "estoqueAtual": {
+            "type": "number"
+          },
+          "mediaVeiculosCompradosMes": {
+            "type": "number"
+          },
+          "frequenciaCompra": {
+            "$ref": "#/components/schemas/frequencias-compra"
+          },
+          "inseridoEm": {
+            "type": "string"
+          }
+        }
+      },
+      "venda": {
+        "properties": {
+          "vendaId": {
+            "type": "number",
+            "example": 579
+          },
+          "fichaVendaId": {
+            "type": "number",
+            "example": 579
+          },
+          "inseridoEm": {
+            "type": "string",
+            "description": "ISO 8601 date format",
+            "example": "2021-03-09T18:22:56.990Z"
+          }
+        }
+      },
+      "vendasContratosTsrv": {
+        "properties": {
+          "contratoId": {
+            "type": "number"
+          }
+        }
+      },
+      "statusVenda": {
+        "properties": {
+          "siglaStatusVenda": {
+            "type": "string",
+            "example": "A"
+          },
+          "statusVenda": {
+            "type": "string",
+            "example": "Aguardando Assinatura"
+          }
+        }
+      },
+      "posVenda": {
+        "properties": {
+          "posVendaId": {
+            "type": "number",
+            "example": 1
+          },
+          "chamadoTopDesk": {
+            "type": "string",
+            "example": "7b300346-fb2a-4577-af62-b413ad65a0d1"
+          },
+          "statusChamadoTopDesk": {
+            "type": "string",
+            "example": "Registrado"
+          },
+          "placa": {
+            "type": "string",
+            "example": "BRA-1234"
+          },
+          "modelo": {
+            "type": "string",
+            "example": "Novo Gol G6 Flex 1.0 4P"
+          },
+          "observacao": {
+            "type": "string",
+            "example": "multa"
+          },
+          "inseridoEm": {
+            "type": "string",
+            "example": "2021-03-08T18:04:10.395Z"
+          },
+          "modificadoEm": {
+            "type": "string",
+            "example": "2021-03-08T18:04:10.395Z"
+          },
+          "tipoPosVenda": {
+            "$ref": "#/components/schemas/tipoPosVenda"
+          },
+          "vendaVeiculo": {
+            "$ref": "#/components/schemas/veiculoVenda"
+          }
+        }
+      },
+      "posVendaMulta": {
+        "properties": {
+          "posVendaId": {
+            "type": "number",
+            "example": 1
+          },
+          "chamadoTopDesk": {
+            "type": "string",
+            "example": "7b300346-fb2a-4577-af62-b413ad65a0d1"
+          },
+          "statusChamadoTopDesk": {
+            "type": "string",
+            "example": "Registrado"
+          },
+          "placa": {
+            "type": "string",
+            "example": "BRA-1234"
+          },
+          "modelo": {
+            "type": "string",
+            "example": "Novo Gol G6 Flex 1.0 4P"
+          },
+          "observacao": {
+            "type": "string",
+            "example": "multa"
+          },
+          "dataHoraInfracao": {
+            "type": "string",
+            "example": "2021-03-08T18:04:10.395Z"
+          },
+          "numeroAit": {
+            "type": "string",
+            "example": "5LNNNNNN"
+          },
+          "inseridoEm": {
+            "type": "string",
+            "example": "2021-03-08T18:04:10.395Z"
+          },
+          "modificadoEm": {
+            "type": "string",
+            "example": "2021-03-08T18:04:10.395Z"
+          },
+          "tipoPosVenda": {
+            "$ref": "#/components/schemas/tipoPosVenda"
+          },
+          "vendaVeiculo": {
+            "$ref": "#/components/schemas/veiculoVenda"
+          }
+        }
+      },
+      "tipoPosVenda": {
+        "properties": {
+          "tipoPosVendaId": {
+            "type": "number",
+            "example": 1
+          },
+          "descricaoTipoPosVenda": {
+            "type": "string",
+            "example": "Pagamento de multa"
+          },
+          "inseridoEm": {
+            "type": "string",
+            "example": "Date"
+          },
+          "modificadoEm": {
+            "type": "string",
+            "example": "Date"
+          }
+        }
+      },
+      "veiculoVenda": {
+        "properties": {
+          "veiculoVendaId": {
+            "type": "number",
+            "example": 118
+          },
+          "valorItemVenda": {
+            "type": "number",
+            "example": 1
+          },
+          "requestSignatureKey": {
+            "type": "string",
+            "description": "uuid",
+            "example": "6b384e12-426e-4569-9a01-3624afd3cef1"
+          }
+        }
+      },
+      "paginacao": {
+        "properties": {
+          "numeroPagina": {
+            "type": "number",
+            "example": 1
+          },
+          "numeroLinhas": {
+            "type": "number",
+            "example": 50
+          },
+          "totalPaginas": {
+            "type": "number",
+            "example": 1
+          },
+          "totalLinhas": {
+            "type": "number",
+            "example": 1
+          }
+        }
+      },
+      "veiculoCompleto": {
+        "description": "Descrição completa do veículo, incluindo acessórios, modelo, unidade em que se encontra, etc.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/veiculo"
+          },
+          {
+            "properties": {
+              "acessorios": {
+                "items": {
+                  "$ref": "#/components/schemas/acessorio"
+                }
+              },
+              "cor": {
+                "$ref": "#/components/schemas/cor"
+              },
+              "modelo": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/modelo"
+                  },
+                  {
+                    "properties": {
+                      "marca": {
+                        "$ref": "#/components/schemas/marca"
+                      },
+                      "categoria": {
+                        "$ref": "#/components/schemas/categoria"
+                      },
+                      "cambio": {
+                        "$ref": "#/components/schemas/cambio"
+                      }
+                    }
+                  }
+                ]
+              },
+              "combustivel": {
+                "$ref": "#/components/schemas/combustivel"
+              },
+              "fipe": {
+                "$ref": "#/components/schemas/fipe"
+              },
+              "empresa": {
+                "$ref": "#/components/schemas/empresa"
+              },
+              "unidade": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/unidade"
+                  },
+                  {
+                    "properties": {
+                      "empresa": {
+                        "$ref": "#/components/schemas/empresa"
+                      },
+                      "endereco": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/endereco"
+                          },
+                          {
+                            "properties": {
+                              "municipio": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/components/schemas/cidade"
+                                  },
+                                  {
+                                    "properties": {
+                                      "estado": {
+                                        "$ref": "#/components/schemas/estado"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "vendaCompleta": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/venda"
+          },
+          {
+            "properties": {
+              "statusVenda": {
+                "$ref": "#/components/schemas/statusVenda"
+              },
+              "veiculosVenda": {
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/veiculoVenda"
+                    },
+                    {
+                      "properties": {
+                        "veiculo": {
+                          "$ref": "#/components/schemas/veiculoCompleto"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "usuarioB2b": {
+                "$ref": "#/components/schemas/usuario"
+              }
+            }
+          }
+        ]
+      },
+      "xxx": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
