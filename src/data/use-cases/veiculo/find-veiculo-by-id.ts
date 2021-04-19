@@ -1,6 +1,6 @@
 import { IDbFindVeiculoById } from '@/data/protocols/veiculo/db-find-veiculo'
 import { IVeiculoModel } from '@/domain/models/veiculo/veiculo-model'
-import { IFindVeiculoById } from '@/domain/protocols/veiculo/find-veiculos'
+import { IFindVeiculoById } from '@/domain/protocols/veiculo/find-veiculo'
 
 export class FindVeiculoById implements IFindVeiculoById {
   constructor (

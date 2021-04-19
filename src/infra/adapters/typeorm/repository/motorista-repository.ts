@@ -12,8 +12,13 @@ export class MotoristaRepository implements IDbFindMotoristas, IDbFindMotoristaB
     return getRepository(Motorista)
   }
 
-  async findAll (): Promise<IMotoristaModel[]> {
-    const result = await this.getMotoristaRepo().find()
+  async findAll (cpf?: string, nome?: string): Promise<IMotoristaModel[]> {
+    const result = await this.getMotoristaRepo().find({
+      where: {
+        cpf: cpf,
+        nomeMotorista: nome
+      }
+    })
     return result ? motoristasMapToModel(result) : null
   }
 
