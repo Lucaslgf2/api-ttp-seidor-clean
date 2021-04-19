@@ -1,5 +1,5 @@
 import { IUtilizacaoVeiculoModel } from '@/domain/models/utilizacao-veiculo/utilizacao-veiculo-model'
-import { UtilizacaoVeiculo } from '../entities/utilizacao-veiculo'
+import { UtilizacaoVeiculo } from '@/infra/adapters/typeorm/entities/utilizacao-veiculo'
 import { motoristaMapToEntity, motoristaMapToModel } from './motorista-mapper'
 import { veiculoMapToEntity, veiculoMapToModel } from './veiculo-mapper'
 

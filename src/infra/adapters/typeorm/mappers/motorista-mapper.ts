@@ -1,5 +1,5 @@
 import { IMotoristaModel } from '@/domain/models/motorista/motorista-model'
-import { Motorista } from '../entities/motorista'
+import { Motorista } from '@/infra/adapters/typeorm/entities/motorista'
 
 export const motoristaMapToModel = (entity: Motorista): IMotoristaModel => {
   const model: IMotoristaModel = {
