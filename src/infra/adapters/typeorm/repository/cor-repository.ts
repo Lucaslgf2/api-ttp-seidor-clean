@@ -1,4 +1,4 @@
-import { IDbFindCorById, IDbFindCores } from '@/data/protocols/cor/find-cor'
+import { IDbFindCorById, IDbFindCores } from '@/data/protocols/cor/db-find-cor'
 import { ICorModel } from '@/domain/models/cor/cor-model'
 import { Cor } from '@/infra/adapters/typeorm/entities/cor'
 import { coresMapToModel, corMapToModel } from '@/infra/adapters/typeorm/mappers/cor-mapper'

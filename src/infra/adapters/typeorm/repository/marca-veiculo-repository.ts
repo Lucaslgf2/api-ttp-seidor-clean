@@ -1,4 +1,4 @@
-import { IDbFindMarcasVeiculo, IDbFindMarcaVeiculoById } from '@/data/protocols/marca-veiculo/find-marca-veiculo'
+import { IDbFindMarcasVeiculo, IDbFindMarcaVeiculoById } from '@/data/protocols/marca-veiculo/db-find-marca-veiculo'
 import { IMarcaVeiculoModel } from '@/domain/models/marca-veiculo/marca-veiculo-model'
 import { MarcaVeiculo } from '@/infra/adapters/typeorm//entities/marca-veiculo'
 import { marcasVeiculoMapToModel, marcaVeiculoMapToModel } from '@/infra/adapters/typeorm/mappers/marca-veiculo-mapper'
