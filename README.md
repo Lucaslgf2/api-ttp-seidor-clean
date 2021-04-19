@@ -37,6 +37,12 @@ Objetivo: Construtir uma API que permita controlar a utilização dos automóvei
 
 <br>
 
+> ## Diagrama do Banco de Dados
+* Utilizado o sqlite com persistencia em arquivo .db3 e tambem em modo de armazenamento temporario em memoria (para os testes).
+![](./public/Diagrama-Banco-Dados.png)
+
+<br>
+
 > ## Endpoints ref. Automóvel
 * Cadastrar um novo automóvel.
 * Atualizar um automóvel cadastrado.
@@ -68,9 +74,41 @@ Objetivo: Construtir uma API que permita controlar a utilização dos automóvei
 
 <br>
 
-> ## Diagrama do Banco de Dados
-* Utilizado o sqlite com persistencia em arquivo .db3 e tambem em modo de armazenamento temporario em memoria (para os testes).
-![](./public/Diagrama-Banco-Dados.png)
+> ## Bibliotecas e Ferramentas
+* NPM
+* Typescript
+* Git
+* Docker
+* Jest
+* Sqlite
+* Swagger
+* JsonWebToken
+* Faker
+* Validator
+* Express
+* Husky
+* Lint Staged
+* Eslint
+* Standard Javascript Style
+* Rimraf
+* Module-Alias
+* Copyfiles
+* Npm Check
+
+* **StandardJS + ESLint**  
+      É um guia de estilo (style guides) que define padrões de escrita no código-fonte. É um documento descritivo que vai dizer quais são as regras e padrões a serem seguidos no projeto. Obedecendo convenções de codificação, as quais são diretrizes de estilo para programação.
+
+   - Estas diretrizes normalmente cobrem:
+      - Regras de nomenclatura e declaração para variáveis e funções.
+      - Regras para o uso de espaço em branco, recuo e comentários.
+      - Práticas e princípios de programação.
+      
+   - Já as convenções de codificação garantem qualidade:
+      - Melhorando a legibilidade do código  
+      - Facilitando a manutenção do código
+
+* **Husky + Lint-Staged**  
+      Ferramentas para automatizar a padronização e qualidade do código-fonte, evitando que sejam realizados commits com estilo de código fora do padrão, sem testes unitários ou com cobertura de testes abaixo de 100%.
 
 <br>
 

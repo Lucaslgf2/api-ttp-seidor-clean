@@ -4,7 +4,7 @@ import { MarcaVeiculo } from '@/infra/adapters/typeorm//entities/marca-veiculo'
 import { marcasVeiculoMapToModel, marcaVeiculoMapToModel } from '@/infra/adapters/typeorm/mappers/marca-veiculo-mapper'
 import { getRepository, Repository } from 'typeorm'
 
-export class CorRepository implements IDbFindMarcasVeiculo, IDbFindMarcaVeiculoById {
+export class MarcaVeiculoRepository implements IDbFindMarcasVeiculo, IDbFindMarcaVeiculoById {
   private getMarcaVeiculoRepo (): Repository<MarcaVeiculo> {
     return getRepository(MarcaVeiculo)
   }

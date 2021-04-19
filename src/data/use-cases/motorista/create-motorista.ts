@@ -4,7 +4,7 @@ import { GenericBussinessError } from '@/domain/bussiness-errors/generic-bussine
 import { IInsertMotoristaModel, IMotoristaModel } from '@/domain/models/motorista/motorista-model'
 import { ICreateMotorista } from '@/domain/protocols/motorista/create-motorista'
 
-export class CreateVeiculo implements ICreateMotorista {
+export class CreateMotorista implements ICreateMotorista {
   constructor (
     private readonly motoristaRepository: IDbFindMotoristas & IDbInsertMotorista
   ) {}
