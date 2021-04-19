@@ -8,3 +8,8 @@ export interface IVeiculoModel {
   cor: ICorModel
   inseridoEm?: Date
 }
+
+export interface IInsertVeiculoModel extends Omit<IVeiculoModel, 'marca' | 'cor'> {
+  marcaId: number
+  corId: number
+}

@@ -12,8 +12,14 @@ export class VeiculoRepository implements IDbFindVeiculos, IDbFindVeiculoById, I
     return getRepository(Veiculo)
   }
 
-  async findAll (): Promise<IVeiculoModel[]> {
-    const result = await this.getVeiculoRepo().find()
+  async findAll (placa?: string, corId?: number, marcaVeiculoId?: number): Promise<IVeiculoModel[]> {
+    const result = await this.getVeiculoRepo().find({
+      where: {
+        placa: placa,
+        cor: { codigoCor: corId },
+        marcaVeiculo: { codigoMarcaVeiculo: marcaVeiculoId }
+      }
+    })
     return result ? veiculosMapToModel(result) : null
   }
 
