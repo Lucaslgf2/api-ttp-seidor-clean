@@ -45,7 +45,7 @@
     {
       "name": "Veiculos",
       "description": "Endpoints relacionados a entidade de Veiculo"
-    },
+    }
   ],
 
   "paths": {
@@ -56,7 +56,7 @@
         "description": "",
         "responses": {
           "200": {
-            "$ref": "#components/responses/getCoresResponse"
+            "$ref":  "#/components/responses/getCoresResponse"
           }
         }
       }
@@ -80,9 +80,17 @@
         "tags": ["Motoristas"],
         "summary": "",
         "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cpf"
+          },
+          {
+            "$ref": "#/components/parameters/nome"
+          }
+        ],
         "responses": {
           "200": {
-            "$ref": "#components/responses/getMotoristasResponse"
+            "$ref":   "#/components/responses/getMotoristasResponse"
           }
         }
       },
@@ -91,11 +99,11 @@
         "summary": "",
         "description": "",
         "requestBody": {
-          "$ref": "#/components/requestBodies/postMotoristasRequest"
+          "$ref": "#/components/schemas/teste"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/postMotoristasResponse"
+            "$ref":   "#/components/responses/getMotoristaResponse"
           }
         }
       }
@@ -118,7 +126,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#components/responses/getMotoristasResponse"
+            "$ref":   "#/components/responses/getMotoristaResponse"
           }
         }
       },
@@ -137,11 +145,11 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/putMotoristasRequest"
+          "$ref": "#/components/schemas/teste"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/putMotoristasResponse"
+            "$ref":   "#/components/responses/getMotoristaResponse"
           }
         }
       },
@@ -159,12 +167,21 @@
             }
           }
         ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/deleteMotoristasRequest"
-        },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/deleteMotoristasResponse"
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "O Motorista informado foi removido com sucesso!"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -175,6 +192,17 @@
         "tags": ["Veiculos"],
         "summary": "",
         "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/placa"
+          },
+          {
+            "$ref": "#/components/parameters/corId"
+          },
+          {
+            "$ref": "#/components/parameters/marcaVeiculoId"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#components/responses/getVeiculosResponse"
@@ -186,11 +214,11 @@
         "summary": "",
         "description": "",
         "requestBody": {
-          "$ref": "#/components/requestBodies/postVeiculosRequest"
+          "$ref": "#/components/schemas/teste"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/postVeiculosResponse"
+            "$ref": "#/components/responses/getVeiculoResponse"
           }
         }
       }
@@ -213,7 +241,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#components/responses/getVeiculosResponse"
+            "$ref": "#/components/responses/getVeiculoResponse"
           }
         }
       },
@@ -232,11 +260,11 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/putVeiculosRequest"
+          "$ref": "#/components/schemas/teste"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/putVeiculosResponse"
+            "$ref": "#/components/responses/getVeiculoResponse"
           }
         }
       },
@@ -254,12 +282,90 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "O Veiculo informado foi removido com sucesso!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/utilizacao-veiculos": {
+      "get": {
+        "tags": ["Utilização de Veiculos"],
+        "summary": "",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cpf"
+          },
+          {
+            "$ref": "#/components/parameters/nome"
+          },
+          {
+            "$ref": "#/components/parameters/placa"
+          },
+          {
+            "$ref": "#/components/parameters/corId"
+          },
+          {
+            "$ref": "#/components/parameters/marcaVeiculoId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#components/responses/getUtilizacaoVeiculosResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Utilização de Veiculos"],
+        "summary": "",
+        "description": "",
         "requestBody": {
-          "$ref": "#/components/requestBodies/deleteVeiculosRequest"
+          "$ref": "#/components/schemas/teste"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/deleteVeiculosResponse"
+            "$ref": "#/components/responses/getUtilizacaoVeiculoResponse"
+          }
+        }
+      }
+    },
+
+    "/utilizacao-veiculos/{utilizacaoVeiculoId}": {
+      "patch": {
+        "tags": ["Utilização de Veiculos"],
+        "summary": "",
+        "description": "",
+        "parameters": [
+          {
+            "name": "utilizacaoVeiculoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/schemas/teste"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/getUtilizacaoVeiculoResponse"
           }
         }
       }
@@ -325,11 +431,11 @@
               "properties": {
                 "email": {
                   "type": "string",
-                  "example": "andrea@mail.com"
+                  "example": "lucas@email.com"
                 },
                 "senha": {
                   "type": "string",
-                  "example": "unidas123"
+                  "example": "123"
                 }
               }
             }
@@ -361,8 +467,138 @@
         }
       },
 
-      getMarcasVeiculoResponse
-      getMotoristasResponse
+      "getMarcasVeiculoResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/marcaVeiculo"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getMotoristasResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/motorista"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getMotoristaResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                      "$ref": "#/components/schemas/motorista"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getVeiculosResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/veiculo"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getVeiculoResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                      "$ref": "#/components/schemas/veiculo"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getUtilizacaoVeiculosResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/utilizacaoVeiculo"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "getUtilizacaoVeiculoResponse": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                      "$ref": "#/components/schemas/utilizacaoVeiculo"
+                }
+              }
+            }
+          }
+        }
+      }
     },
 
     "schemas": {
